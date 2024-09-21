@@ -8,7 +8,7 @@ Use Python version 3.8
  
 ## Description
 Pytorch implementation of the paper [DocTrKan: Document Image Enhancement Based
-on KAN-Enhanced Transformer Networks](https://arxiv.org/abs/2201.10252). This model is implemented on top of the [vit-pytorch](---) vision transformers library,Added [KAN](https://github.com/Blealtan/efficient-kan) enhanced vit. The proposed model can be used to enhance (binarize) degraded document images, as shown in the following samples.
+on KAN-Enhanced Transformer Networks](). This model is implemented on top of the [vit-pytorch](https://github.com/lucidrains/vit-pytorch) vision transformers library,Added [KAN](https://github.com/Blealtan/efficient-kan) enhanced vit. The proposed model can be used to enhance (binarize) degraded document images, as shown in the following samples.
  
 <table style="padding:10px">
     <tr>
