@@ -1,0 +1,30 @@
+# 忽略模型权重
+weights/
+
+# 忽略任何中间生成的训练数据
+*.h5
+*.ckpt
+*.npy
+visbase_256_16/
+restestorivisbase_256_16/
+restestfullvisbase_256_16/
+resorivisbase_256_16/
+resfull_visbase_256_16/
+
+# 忽略训练输出日志
+*.log
+
+# 忽略Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# 忽略日志文件
+debug-cli.zhengyoukang.log
+
+# 忽略缓存文件夹
+__pycache__/
+
+# 忽略Weights & Biases文件夹
+wandb/
+
+# 忽略配置文件，具体情况具体分析
+cog.yaml
