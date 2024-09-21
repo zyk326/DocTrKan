@@ -17,19 +17,19 @@ class FeedForward(nn.Module):
         super().__init__()
         self.net = nn.Sequential(
             nn.LayerNorm(dim),
-            nn.Linear(dim, hidden_dim),
-            # KAN([dim, hidden_dim]),
+            # nn.Linear(dim, hidden_dim),
+            KAN([dim, hidden_dim]),
             nn.GELU(),
             nn.Dropout(dropout),
-            # KAN([hidden_dim, dim]),
-            nn.Linear(hidden_dim, dim),
+            KAN([hidden_dim, dim]),
+            # nn.Linear(hidden_dim, dim),
             nn.Dropout(dropout)
         )
 
     def forward(self, x):
         b, t, s = x.shape
-        # return self.net(x.reshape(-1, x.shape[-1])).reshape(b, t, s)
-        return self.net(x)
+        return self.net(x.reshape(-1, x.shape[-1])).reshape(b, t, s)
+        # return self.net(x)
 
 class Attention(nn.Module):
     def __init__(self, dim, heads = 8, dim_head = 64, dropout = 0.):
@@ -113,8 +113,8 @@ class ViT(nn.Module):
         self.pool = pool
         self.to_latent = nn.Identity()
 
-        self.mlp_head = nn.Linear(dim, num_classes)
-        # self.mlp_head = KAN([dim, num_classes])
+        # self.mlp_head = nn.Linear(dim, num_classes)
+        self.mlp_head = KAN([dim, num_classes])
 
     def forward(self, img):
         x = self.to_patch_embedding(img)
@@ -132,6 +132,6 @@ class ViT(nn.Module):
         x = self.to_latent(x)
 
         b, h, w = x.shape
-        # return self.mlp_head(x.reshape(-1, x.shape[-1])).reshape(b, h, w)
+        return self.mlp_head(x.reshape(-1, x.shape[-1])).reshape(b, h, w)
     
-        return self.mlp_head(x)
+        # return self.mlp_head(x)
